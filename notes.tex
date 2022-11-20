@@ -2,7 +2,24 @@
 
 \usepackage[margin=2cm]{geometry}
 
+% BibTeX setup
+\usepackage[backend=bibtex, bibstyle=alphabetic, citestyle=alphabetic]{biblatex}
+\bibliography{references}
+
+\usepackage[english]{babel} % English
+
+% Standard packages for math-related things.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{mathtools}
+
+\usepackage{graphicx} % to include graphics with \includegraphics[options]{imagefile}
+
+\theoremstyle{plain} % Usual style for theorems, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \newcommand{\N}{\mathbb{N}} % blackboard bold N for natural numbers
 \newcommand{\R}{\mathbb{R}} % blackboard bold R for real numbers
@@ -12,6 +29,32 @@
 
 \begin{document}
 
-Hello world
+\begin{lemma}
+A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
+\end{lemma}
+
+\begin{proof}
+TODO (Lemma 2.1 of Decidability of string graphs paper)
+\end{proof}
+
+\begin{lemma}
+\begin{enumerate}
+    \item \(c_w(m) \leq c_r(m)\)
+    \item \( c_r(m) \leq 4 c_s(m^2 + 4m) \)
+    \item \(c_s(m) \leq 4 c_w(2m) + 2m\)
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    TODO (page 4 of Decidability of string graphs paper)
+\end{proof}
+
+\begin{lemma}
+    Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
+\end{lemma}
+
+\begin{proof}
+TODO (Lemma 3.1 of Decidability of string graphs paper)
+\end{proof}
 
 \end{document}
