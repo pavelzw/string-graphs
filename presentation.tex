@@ -1,0 +1,55 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+
+\title{Mathematical Foundations of Computer Science}
+\subtitle{Decidability of string graphs}
+\date{19.11.2021}
+\author{Pavel Zwerschke}
+\institute{Radboud University Nijmegen}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logos/radboud-university}}
+
+% BibTeX setup
+\usepackage[backend=bibtex, bibstyle=alphabetic, citestyle=alphabetic]{biblatex}
+\bibliography{references}
+
+\usepackage[english]{babel} % English
+
+% Standard packages for math-related things.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\usepackage{graphicx} % to include graphics with \includegraphics[options]{imagefile}
+\definecolor{lightblue}{RGB}{189,216,238}
+
+\theoremstyle{plain} % Usual style for theorems, etc.
+
+\setbeamertemplate{theorems}[numbered]
+
+\theoremstyle{remark} % Usual style definitions.
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\norm}[1]{\|#1\|}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Table of contents}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents%[hideallsubsections]
+\end{frame}
+
+\begin{frame}{blabla}
+    Hello World
+\end{frame}
+
+
+\end{document}
