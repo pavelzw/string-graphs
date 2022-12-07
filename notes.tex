@@ -26,10 +26,11 @@
 \newcommand{\Z}{\mathbb{Z}} % blackboard bold Z for integers
 
 \newcommand{\set}[1]{\{#1\}}
+\newcommand{\image}[1]{\begin{center}\includegraphics[width=0.5\textwidth]{#1}\end{center}}
 
 \begin{document}
 
-\begin{lemma}
+\begin{lemma}\label{lem:finite-intersections}
 A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
 \end{lemma}
 
@@ -38,7 +39,7 @@ Assume string graph realized by \( (C_i)_{i\in I} \). Let \(C = \bigcup_{i\in I}
 \(C\) is compact since it is bounded and closed. Let \(p \in C\) and \(O \ni p\) an open neighborhood 
 in the plane. \(O\) \textit{respects} the family of curves if \(O\) only intersects curves that contain \(p\).
 
-\includegraphics[width=0.5\textwidth]{images/figure-1.jpeg}
+\image{images/figure-1.jpeg}
 
 Every point has at least one such neighborhood (curves are compact). 
 Let \(\mathcal{O}\) be the colection of all open neighborhoods of \(p\in C\) that respect 
@@ -54,7 +55,7 @@ while guaranteeing that \(P_i\) intersects \(P_j\) if \(C_i\) and \(C_j\) inters
 (Possible since \(\exists O \in \mathcal{O}'\) which contains a common intersection point of \(C_i\) and \(C_j\)).
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\ 
 \begin{enumerate}
     \item \(c_w(m) \leq c_r(m)\)
     \item \( c_r(m) \leq 4 c_s(m^2 + 4m) \)
@@ -63,15 +64,60 @@ while guaranteeing that \(P_i\) intersects \(P_j\) if \(C_i\) and \(C_j\) inters
 \end{lemma}
 
 \begin{proof}
-    TODO (page 4 of Decidability of string graphs paper)
+1. follows from \(c_w(G, R) \leq \max\set{c_r(G, R'): R' \subseteq R \text{ and } (G,R) \text{ has a realization}} = c_r(G, R') \).
+
+2. Idea: Let \(G = (V, E)\) be a graph and \(R \subseteq \binom{E}{2}\). Construct \(V' = V \cup E \cup \set{(u, e) : u \in e \in E}\) 
+and \(E' = R \cup \set{ \set{u, (u,e)}, u \in e \in E} \cup \set{\set{e, (u,e)}, u\in e \in E}\). Then \((G, R)\) is realizable iff 
+\(G' = (V', E')\) is a string graph. \(\Rightarrow \) 2.
+
+\image{images/figure-2.jpeg}
+
+3. Idea: Given a graph \(G = (V, E)\), let \(G' = (V \cup E, \set{\set{u,e} : u \in e \in E})\) and 
+\(R = \set{\set{\set{u,e}, \set{v,f}} : \set{u,v} \in E}\). Then \(G\) is a string graph iff \((G', R)\) 
+is weakly realizable. \(\Rightarrow \) 3.
+
+\image{images/figure-3.jpeg}
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lem:even-occurences}
     Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
 \end{lemma}
 
 \begin{proof}
-TODO (Lemma 3.1 of Decidability of string graphs paper)
+Let \(\Sigma = \set{1, \ldots, n}\), \(w \in \Sigma^*, |w| \geq 2^n\). To every \(i \in \set{0, \ldots, 2^n}\) 
+assign a vector \(v_i \in \Z_2^n\) whose \(j\)-th coordinate \(=\) parity of \#occurences of symbol \(j\) in the 
+prefix of \(w\) of length \(i\).
+
+Example:
+\(w = 12312231, |w| = 8 \geq 2^3\)
+
+\[ v_0 = \begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}, v_1 = \begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}, v_2 = \begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix}, v_3 = \begin{pmatrix}
+1 \\ 1 \\ 1
+\end{pmatrix}, v_4 = \begin{pmatrix}
+0 \\ 1 \\ 1
+\end{pmatrix}, \]
+
+\[ v_5 = \begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}, v_6 = \begin{pmatrix}
+0 \\ 1 \\ 1
+\end{pmatrix}, v_7 = \begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}, v_8 = \begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix} \]
+
+\(\exists 2^n + 1\) indices \(\Rightarrow\) Pigeonhole Principle \(\Rightarrow\)
+\(\exists i < j\) with \(v_i = v_j\). \(\Rightarrow\) \(w\) contains a subword \(w' \in \Sigma^*\)
+starting in position \(i + 1\) and ending in position \(j\) such that every symbol occurs an even number of times.
+
+Example: \(v_2 = v_8 \Rightarrow w' = w[2:] = 312231\).
 \end{proof}
 
 \begin{theorem}
@@ -81,7 +127,39 @@ TODO (Lemma 3.1 of Decidability of string graphs paper)
 \end{theorem}
 
 \begin{proof}
-TODO (Theorem 3.2 of Decidability of string graphs paper)
+Suppose not. Let \(D\) be a weak realization of \((G, R)\) with minimal \# intersections amd \(e\) 
+be an edge which has \(> 2^m - 1\) intersections. Lemma \ref{lem:finite-intersections} tells us that \# intersections is finite.
+By Lemma \ref{lem:even-occurences}, we can choose a segment of \(e\) which is intersected an even number of times by any other edge.
+Draw a window around this segment with no other intersections. 
+
+\image{images/figure-4.jpeg}
+TODO remove numbers, only in Fig5
+
+Let \(2n_f\) be the number of intersections of edge \(f\) with \(e\) in this window.
+For each \(f\), assign numbers \(1, \ldots, 4 n_f\) to the intersections with the window in the 
+order they appear on \(f\). 
+
+\image{images/figure-5.jpeg}
+
+We can assume (by Jordan-Schoenflies theorem) that the window is a circle and \(e\) is a straight line passing through the center
+and for every \(f\), the intersections \(2i-1\) and \(2i\) are mirror images of each other.
+
+Next step: remove everything inside the window with the exception of \(e\). For each \(f\), there is a connection between 
+\(4i-2\) and \(4i-1\) lying completely outside the window. 
+
+\image{images/figure-6.jpeg}
+
+Use circular inversion along the circle to bring all of these conections inside.
+
+\image{images/figure-7.jpeg}
+
+Now mirror everything inside of the window along \(e\).
+
+\image{images/figure-8.jpeg}
+
+Now we have for every edge a connection between \(4i-3\) and \(4i\) which is inside the window.
+
+Build a new version of \(f\): start at intersection \(1\) (connected to one of the endpoints of \(f\)),
 \end{proof}
 
 \begin{corollary}
