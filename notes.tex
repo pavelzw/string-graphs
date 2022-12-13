@@ -120,7 +120,7 @@ starting in position \(i + 1\) and ending in position \(j\) such that every symb
 Example: \(v_2 = v_8 \Rightarrow w' = w[2:] = 312231\).
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:weak-realizability-bound}
     Let \(G\) be a graph with \(m\) edges, \(R \subseteq \binom{E}{2}\) such that \((G, R)\) is weakly realizable, and let \(D\) 
     be a weak realization of \((G, R)\) with the minimal number of intersections. Then for any edge \(e \in G\) 
     there are less than \(2^m\) intersections on the curve realizing \(e\) in \(D\).
@@ -160,6 +160,23 @@ Now mirror everything inside of the window along \(e\).
 Now we have for every edge a connection between \(4i-3\) and \(4i\) which is inside the window.
 
 Build a new version of \(f\): start at intersection \(1\) (connected to one of the endpoints of \(f\)),
+continue to \(4\) (inside the window), etc. until \(4 n_f\).
+
+\image{images/figure-9.jpeg}
+
+\(f\) intersects \(e\) an even number of times \(\Rightarrow \tilde{f}\) still connects the two original endpoints.
+
+\(\leadsto\) reduced the number of intersections within the window from \(4 n_f\) 
+to \(2 n_f\).
+
+Every intersection between the curves inside the circle corresponds to an intersection 
+outside \(\Rightarrow\) the new realization respects \(R\) (in this example, there are no intersections).
+
+The number of intersections along \(e\) might have increased (a connection from outside the window brought inside might intersect \(e\) arbitrarily often).
+
+We know: halved the number of intersections between the intersections and the boundary. 
+
+TODO
 \end{proof}
 
 \begin{corollary}
@@ -167,7 +184,19 @@ Build a new version of \(f\): start at intersection \(1\) (connected to one of t
 \end{corollary}
 
 \begin{proof}
-TODO (Corollary 3.3 of Decidability of string graphs paper)
+Let \(G\) be a string graph with \(m\) edges. 
+Then, from \(c_s(m) \leq 4 c_w(2m) + 2m\), we can generate a graph \(G'\) of size \(O(m)\) and \(R\) such that 
+\((G, R)\) is weakly realizable. 
+
+Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \(\leq 2^{O(m)}\) intersections.
+\(\leadsto\) The collection of curves also has \(M = 2^{O(m)}\) intersections.
+
+Consider this collection of curves of size \(M\) and draw them as a planar graph (intersection \(\mapsto\) vertex), 
+at most \(M\) vertices.
+
+By a result of Schnyder and de Fraysseix et al. there is a drawing of this graph on an \(M \times M\) grid.
+
+\(\Rightarrow\) in NEXP, we can guess a graph on such a grid and verify whether its intersection graph is isomorphic to \(G\).
 \end{proof}
 
 \end{document}
