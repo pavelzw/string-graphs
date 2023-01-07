@@ -14,6 +14,8 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 
+\usepackage{stmaryrd} % for \lightning
+
 \usepackage{graphicx} % to include graphics with \includegraphics[options]{imagefile}
 
 \theoremstyle{plain} % Usual style for theorems, etc.
@@ -176,7 +178,14 @@ The number of intersections along \(e\) might have increased (a connection from 
 
 We know: halved the number of intersections between the intersections and the boundary. 
 
-TODO
+\(\leadsto\) \(e'\) = one of the two sides of the boundary of \(e\)
+(at least one side has less intersections than before).
+
+\image{images/figure-10.jpeg}
+
+Overall, we have fewer intersections \(\lightning\)
+
+\(\Rightarrow\) there must exist an edge \(e\) with less than \(2^m\) intersections.
 \end{proof}
 
 \begin{corollary}
@@ -200,4 +209,63 @@ TODO state statement in slides
 \(\Rightarrow\) in NEXP, we can guess a graph on such a grid and verify whether its intersection graph is isomorphic to \(G\).
 \end{proof}
 
+\begin{theorem}
+    \(c_w(m) \geq 2^{c m}\) for some constant \(c > 0\).
+\end{theorem}
+
+\begin{proof}
+We start with the planar graph depicted in the following figure:
+
+\image{images/figure-11.jpeg}
+TODO CORRECT (figure 1 from paper)
+
+The horizontal path \(AB\) is formed by 
+the vertices \(A u_n u_{n-1} v_n u_{n-2} v_{n-1} u_{n-3} \cdots u_2 v_3 u_1 v_2 u_0 v_1 B \).
+
+The short vertical edges join the \(u_i\)'s with the bottom path
+and no two edges are allowed to cross.
+
+This graph has a topologically unique noncrossing drawing in the plane.
+Then we add edges \(\set{u_i, v_i}, i=1,2,\ldots, n \) and allow them to cross
+only the edge \(\set{a,b}\) and the horizontal path \(AB\), not each other.
+
+It can be seen that in every weak realization, the edge \(\set{u_i, v_i}\) intersects 
+the edge \(\set{a,b}\) at least \(2^{i-1}\) times.
+
+The weak realization of minimum size must look like this:
+
+\image{images/figure-12.jpeg}
+TODO CORRECT image (figure 2 from paper)
+
+Proof by induction:
+\(i=1\): \(2^{1-0} = 1\) exactly one crossing of 
+\(\set{a,b}\) \(\Rightarrow\) True
+
+Let it hold for some \(i\). The edge \(\set{u_{i+1}, v_{i+1}}\)
+is not allowed to cross \(\set{u_i, v_i}\) \(\Rightarrow\) must make 
+a turn around \(v_i\) [example \(v_2\)].
+Thus, it consists of two parts: one passing from \(u_{i+1}\) to 
+the turnpoint, the other from the turnpoint to \(v_{i+1}\).
+
+Both parts may be used as an edge joining \(u_i\) and \(v_i\) 
+after contractions of \(\set{u_{i+1}, u_i}\) and \(\set{u_i, v_{i+1}}\) 
+into \(u_i\) and a contraction of the turn around \(v_i\) into \(v_i\).
+
+\(\Rightarrow\) (induction hypothesis) each of the two parts share at least 
+\(2^{i-1}\) common intersecting points with \(\set{a,b}\)
+
+\(\Rightarrow\) the edge \(\set{u_{i+1}, v_{i+1}}\) shares at least \(2^i\) of them.
+
+The reconstructed graph has \(5n + 13\) edges. We have \(c_w(5n + 13) \geq 2^n - 1\).
+\end{proof}
+
+\begin{theorem}
+    \(c_s(n) \geq 2^{\hat{c} n}\) for some \(c > 0\).
+\end{theorem}
+
+\begin{proof}
+Since \(c_s\) and \(c_w\) are polynomially equivalent 
+and \(c_w(n) \geq 2^{c n}\), we can find a 
+\(\hat{c} > 0\) s.t. \(c_s(n) \geq 2^{\hat{c} n}\).
+\end{proof}
 \end{document}
