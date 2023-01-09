@@ -134,14 +134,13 @@ be an edge which has \(> 2^m - 1\) intersections. Lemma \ref{lem:finite-intersec
 By Lemma \ref{lem:even-occurences}, we can choose a segment of \(e\) which is intersected an even number of times by any other edge.
 Draw a window around this segment with no other intersections. 
 
-\image{images/figure-4.jpeg}
-TODO remove numbers, only in Fig5
+\image{images/figure-4.pdf}
 
 Let \(2n_f\) be the number of intersections of edge \(f\) with \(e\) in this window.
 For each \(f\), assign numbers \(1, \ldots, 4 n_f\) to the intersections with the window in the 
 order they appear on \(f\). 
 
-\image{images/figure-5.jpeg}
+\image{images/figure-5.pdf}
 
 We can assume (by Jordan-Schoenflies theorem) that the window is a circle and \(e\) is a straight line passing through the center
 and for every \(f\), the intersections \(2i-1\) and \(2i\) are mirror images of each other.
@@ -149,22 +148,22 @@ and for every \(f\), the intersections \(2i-1\) and \(2i\) are mirror images of 
 Next step: remove everything inside the window with the exception of \(e\). For each \(f\), there is a connection between 
 \(4i-2\) and \(4i-1\) lying completely outside the window. 
 
-\image{images/figure-6.jpeg}
+\image{images/figure-6.pdf}
 
 Use circular inversion along the circle to bring all of these conections inside.
 
-\image{images/figure-7.jpeg}
+\image{images/figure-7.pdf}
 
 Now mirror everything inside of the window along \(e\).
 
-\image{images/figure-8.jpeg}
+\image{images/figure-8.pdf}
 
 Now we have for every edge a connection between \(4i-3\) and \(4i\) which is inside the window.
 
 Build a new version of \(f\): start at intersection \(1\) (connected to one of the endpoints of \(f\)),
 continue to \(4\) (inside the window), etc. until \(4 n_f\).
 
-\image{images/figure-9.jpeg}
+\image{images/figure-9.pdf}
 
 \(f\) intersects \(e\) an even number of times \(\Rightarrow \tilde{f}\) still connects the two original endpoints.
 
@@ -181,7 +180,7 @@ We know: halved the number of intersections between the intersections and the bo
 \(\leadsto\) \(e'\) = one of the two sides of the boundary of \(e\)
 (at least one side has less intersections than before).
 
-\image{images/figure-10.jpeg}
+\image{images/figure-10.pdf}
 
 Overall, we have fewer intersections \(\lightning\)
 
