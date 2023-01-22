@@ -32,6 +32,14 @@
 
 \begin{document}
 
+\textbf{Example}
+\image{images/figure-0.png}
+
+Start with \(K_5\), create a new vertex per edge.
+This cannot be drawn as a string graph. 
+Assume we would be able to do it, then the curves should look 
+somewhat like this (right). Contradiction to \(K_5\) having no planar drawing.
+
 \begin{lemma}\label{lem:finite-intersections}
 A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
 \end{lemma}
@@ -60,13 +68,13 @@ while guaranteeing that \(P_i\) intersects \(P_j\) if \(C_i\) and \(C_j\) inters
 \begin{lemma}\ 
 \begin{enumerate}
     \item \(c_w(m) \leq c_r(m)\)
-    \item \( c_r(m) \leq 4 c_s(m^2 + 4m) \)
+    \item \(c_r(m) \leq d \cdot c_s(p(m))\) for some \(d > 0\), \(p\) polynomial
     \item \(c_s(m) \leq 4 c_w(2m) + 2m\)
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-1. follows from \(c_w(G, R) \leq \max\set{c_r(G, R'): R' \subseteq R \text{ and } (G,R) \text{ has a realization}} = c_r(G, R') \).
+1. Since \(c_w(G, R) = c_r(G, R')\) for some \(R' \subset R\), it follows from \(c_w(G, R) \leq \max\set{c_r(G, R'): R' \subseteq R \text{ and } (G,R) \text{ has a realization}} = c_r(G, R') \).
 
 2. Idea: Let \(G = (V, E)\) be a graph and \(R \subseteq \binom{E}{2}\). Construct \(V' = V \cup E \cup \set{(u, e) : u \in e \in E}\) 
 and \(E' = R \cup \set{ \set{u, (u,e)}, u \in e \in E} \cup \set{\set{e, (u,e)}, u\in e \in E}\). Then \((G, R)\) is realizable iff 
@@ -188,13 +196,13 @@ Overall, we have fewer intersections \(\lightning\)
 \end{proof}
 
 \begin{corollary}
-    String graph recognition is in \textbf{NEXP}.
+    String graph recognition is in \(\mathbf{NEXP}\).
 \end{corollary}
 
 \begin{proof}
-Let \(G\) be a string graph with \(m\) edges. 
-Then, from \(c_s(m) \leq 4 c_w(2m) + 2m\), we can generate a graph \(G'\) of size \(O(m)\) and \(R\) such that 
-\((G, R)\) is weakly realizable. 
+Let \(G\) be a string graph with \(m\) edges.
+Then, from \(c_s(m) \leq 4 c_w(2m) + 2m\), we can generate a graph \(G'\) of size \(O(m)\) and \(R\) such that
+\((G, R)\) is weakly realizable.
 
 Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \(\leq 2^{O(m)}\) intersections.
 \(\leadsto\) The collection of curves also has \(M = 2^{O(m)}\) intersections.
@@ -202,10 +210,9 @@ Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \
 Consider this collection of curves of size \(M\) and draw them as a planar graph (intersection \(\mapsto\) vertex), 
 at most \(M\) vertices.
 
-By a result of Schnyder and de Fraysseix et al. there is a drawing of this graph on an \(M \times M\) grid.
-TODO state statement in slides
+By a result of Schnyder there is a drawing of this graph on an \(M-2 \times M-2\) grid [CLICK to reveal slides].
 
-\(\Rightarrow\) in NEXP, we can guess a graph on such a grid and verify whether its intersection graph is isomorphic to \(G\).
+\(\Rightarrow\) in \(\mathbf{NEXP}\), we can guess a graph on such a grid and verify whether its intersection graph is isomorphic to \(G\).
 \end{proof}
 
 \begin{theorem}
@@ -215,8 +222,7 @@ TODO state statement in slides
 \begin{proof}
 We start with the planar graph depicted in the following figure:
 
-\image{images/figure-11.jpeg}
-TODO CORRECT (figure 1 from paper)
+\image{images/figure-11.png}
 
 The horizontal path \(AB\) is formed by 
 the vertices \(A u_n u_{n-1} v_n u_{n-2} v_{n-1} u_{n-3} \cdots u_2 v_3 u_1 v_2 u_0 v_1 B \).
@@ -233,8 +239,7 @@ the edge \(\set{a,b}\) at least \(2^{i-1}\) times.
 
 The weak realization of minimum size must look like this:
 
-\image{images/figure-12.jpeg}
-TODO CORRECT image (figure 2 from paper)
+\image{images/figure-12.png}
 
 Proof by induction:
 \(i=1\): \(2^{1-0} = 1\) exactly one crossing of 

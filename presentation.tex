@@ -41,10 +41,10 @@
 
 \maketitle
 
-\begin{frame}{Table of contents}
-    \setbeamertemplate{section in toc}[sections numbered]
-    \tableofcontents%[hideallsubsections]
-\end{frame}
+% \begin{frame}{Table of contents}
+%     \setbeamertemplate{section in toc}[sections numbered]
+%     \tableofcontents%[hideallsubsections]
+% \end{frame}
 
 \section{Introduction}
 
@@ -56,10 +56,18 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Non-string graph example}
+    There are graph instances that cannot be string graphs.
+
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{images/figure-0.png}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Definitions}
     \begin{itemize}
         \item \textit{size} of a collection of curves: the number of intersection points
-        \item Let \(c_s(G)\) be the size of the smallest (smallest number of intersections) set of curves whose intersection graph is isomorphic to \(G\)
+        \item \(c_s(G)\): the size of the smallest (smallest number of intersections) set of curves whose intersection graph is isomorphic to \(G\)
         \item Define \(c_s(m) = \max\set{c_s(G) : G \text{ has } m \text{ edges}}\)
     \end{itemize}
 \end{frame}
@@ -83,22 +91,35 @@
         \item \(c_w(G) = \max\set{c_w(G, R) : (G, R) \text{ has a weak realization}} \)
         \item \(c_w(m) = \max\set{c_w(G) : G \text{ has } m \text{ edges}}\)
         \item Define \(c_r(G, R)\), \(c_r(G)\) and \(c_r(m)\) similarly for realizations
-        \item \(\mathrm{cr}(G) = c_w(G, \binom{E}{2})\) is known as the crossing number (\textbf{NP}-complete)
-        \item \(c_w(G, \emptyset)\) is equivalent to planarity testing (in \textbf{P})
+        \item \(\mathrm{cr}(G) = c_w(G, \binom{E}{2})\) is known as the crossing number (\(\mathbf{NP}\)-complete)
+        \item \(c_w(G, \emptyset)\) is equivalent to planarity testing (in \(\mathbf{P}\))
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Relationships between realizability functions}
     \begin{lemma}
+        \label{lem:pol-equivalent}
         \begin{enumerate}
             \item \(c_w(m) \leq c_r(m)\)
-            \item \( c_r(m) \leq 4 c_s(m^2 + 4m) \)
+            \item \(c_r(m) \leq d \cdot c_s(p(m))\) for some \(d > 0\), \(p\) polynomial
             \item \(c_s(m) \leq 4 c_w(2m) + 2m\)
         \end{enumerate}
     \end{lemma}
+    \(\leadsto\) \(c_w\), \(c_r\) and \(c_s\) are polynomially equivalent.
 \end{frame}
 
 \section{Bounding the Number of Intersections}
+
+\begin{frame}{Bounding the Number of Intersections -- Strategy}
+    Show by contradiction: There exists a drawing for a realizability problem 
+    s.t. there are \(< 2^m\) intersections for each edge \(e\) in \(D\).\pause
+
+    This gets translated into a string graph problem with Lemma \ref{lem:pol-equivalent}.\pause
+
+    Every string graph must have a representation with maximally exponential size.\pause
+
+    Construct an algorithm to check if something is a string graph in \(\mathbf{NEXP}\).
+\end{frame}
 
 \begin{frame}{Bounding the Number of Intersections 1}
     Assign each curve a unique number \(\leadsto\) intersections along a particular curve is a word over an alphabet
@@ -123,8 +144,12 @@
 
 \begin{frame}{String graph decidability}
     \begin{corollary}
-        String graph recognition is in \textbf{NEXP}.
+        String graph recognition is in \(\mathbf{NEXP}\).
     \end{corollary}
+    \pause
+    \begin{theorem}[Schnyder]
+        Each plane graph with \(n \geq 3\) vertices has a straight line embedding on the \(n-2\) by \(n-2\) grid.
+    \end{theorem}
 \end{frame}
 
 \section{String Graphs Requiring Exponential Representations}
@@ -140,6 +165,13 @@
     \begin{theorem}
         \(c_w(m) \geq 2^{c m}\) for some constant \(c > 0\).
     \end{theorem}
+\end{frame}
+
+\begin{frame}{Exponential Representations}
+    \centering{}\includegraphics<1>[width=0.8\textwidth]{images/figure-11.png}\includegraphics<2>[width=0.8\textwidth]{images/figure-12.png}
+\end{frame}
+
+\begin{frame}{Exponential Representations}
     \begin{corollary}
         \(c_s(m) \geq 2^{\hat{c} m}\) for some constant \(\hat{c} > 0\).
     \end{corollary}
