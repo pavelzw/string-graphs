@@ -87,10 +87,12 @@
         \item Graph \(G = (V, E)\), \(R \subseteq \binom{E}{2} = \set{\set{e, f} : e, f \in E} \) on \(E\)
         \item call a drawing \(D\) of \(G\) in the plane a \textit{weak realization} of \((G, R)\) if only pairs of edges which are in \(R\) are allowed to intersect in \(D\)
         \item call a drawing \(D\) of \(G\) in the plane a \textit{realization} of \((G, R)\) if exactly pairs of edges which are in \(R\) are intersect in \(D\)
+        \pause
         \item \(c_w(G, R)\) is the smallest number of intersections in a weak realization of \((G, R)\)
         \item \(c_w(G) = \max\set{c_w(G, R) : (G, R) \text{ has a weak realization}} \)
         \item \(c_w(m) = \max\set{c_w(G) : G \text{ has } m \text{ edges}}\)
         \item Define \(c_r(G, R)\), \(c_r(G)\) and \(c_r(m)\) similarly for realizations
+        \pause
         \item \(\mathrm{cr}(G) = c_w(G, \binom{E}{2})\) is known as the crossing number (\(\mathbf{NP}\)-complete)
         \item \(c_w(G, \emptyset)\) is equivalent to planarity testing (in \(\mathbf{P}\))
     \end{itemize}
