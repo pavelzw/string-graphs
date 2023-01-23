@@ -49,6 +49,7 @@
 \section{Introduction}
 
 \begin{frame}{What is a string graph?}
+    \setbeamertemplate{background}[grid]
     \begin{itemize}
         \item A \textit{curve} (or \textit{string}) is a set homeomorphic to \([0,1]\)
         \item Given a collection of curves \((C_i)_{i \in I}\) in the plane, the corresponding intersection graph is \( (I, \set{\set{i, j} : C_i \text{ and } C_j \text{ intersect}}) \)
@@ -79,8 +80,18 @@
     \end{itemize}
     \begin{lemma}
         A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
+        \label{lem:finite-cs}
     \end{lemma}
 \end{frame}
+
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Lemma \ref{lem:finite-cs} Proof}
+    \begin{lemma}
+        A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
+    \end{lemma}
+\end{frame}
+\setbeamertemplate{background}[default]
 
 \begin{frame}{Realizability}
     \begin{itemize}
@@ -105,6 +116,15 @@
     \end{lemma}
 \end{frame}
 
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Lemma \ref{lem:pol-equivalent} Proof}
+    \begin{lemma}
+        \(c_r\), \(c_w\) and \(c_s\) are polynomially equivalent.
+    \end{lemma}
+\end{frame}
+\setbeamertemplate{background}[default]
+
 \section{Bounding the Number of Intersections}
 
 \begin{frame}{Bounding the Number of Intersections -- Strategy}
@@ -122,9 +142,20 @@
     Assign each curve a unique number \(\leadsto\) intersections along a particular curve is a word over an alphabet
     \begin{lemma}
         Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
+        \label{lem:even-occurrences}
     \end{lemma}
-    \pause
-    \textbf{Example:}
+\end{frame}
+
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Lemma \ref{lem:even-occurrences} Proof}
+    \begin{lemma}
+        Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
+    \end{lemma}
+\end{frame}
+\setbeamertemplate{background}[default]
+
+\begin{frame}{Lemma \ref{lem:even-occurrences} Example}
     \(w = 12312231, |w| = 8 \geq 2^3\)
 
     \[ v_0 = \begin{pmatrix}
@@ -149,8 +180,6 @@
     1 \\ 1 \\ 0
     \end{pmatrix} \]
 \end{frame}
-
-
 
 \begin{frame}{Bounding the Number of Intersections 2}
     \begin{theorem}
@@ -292,11 +321,24 @@
 \begin{frame}{String graph decidability}
     \begin{corollary}
         String graph recognition is in \(\mathbf{NEXP}\).
+        \label{cor:decidability}
     \end{corollary}
     \begin{theorem}[Schnyder]
         Each plane graph with \(n \geq 3\) vertices has a straight line embedding on the \(n-2\) by \(n-2\) grid.
     \end{theorem}
 \end{frame}
+
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-2}
+\begin{frame}[t]{Corollary \ref{cor:decidability} Proof}
+    \begin{corollary}
+        String graph recognition is in \(\mathbf{NEXP}\).
+    \end{corollary}
+    \begin{theorem}[Schnyder]
+        Each plane graph with \(n \geq 3\) vertices has a straight line embedding on the \(n-2\) by \(n-2\) grid.
+    \end{theorem}
+\end{frame}
+\setbeamertemplate{background}[default]
 
 \section{String Graphs Requiring Exponential Representations}
 
@@ -310,8 +352,18 @@
 \begin{frame}{Exponential Representations}
     \begin{theorem}
         \(c_w(m) \geq 2^{c m}\) for some constant \(c > 0\).
+        \label{thm:exp-cw}
     \end{theorem}
 \end{frame}
+
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Theorem \ref{cor:exp-cw} Proof}
+    \begin{theorem}
+        \(c_w(m) \geq 2^{c m}\) for some constant \(c > 0\).
+    \end{theorem}
+\end{frame}
+\setbeamertemplate{background}[default]
 
 \begin{frame}{Exponential Representations}
 \includegraphics<1>[width=0.8\textwidth]{images/figure-11.png}\includegraphics<2>[width=0.8\textwidth]{images/figure-12.png}
@@ -320,7 +372,17 @@
 \begin{frame}{Exponential Representations}
     \begin{corollary}
         \(c_s(m) \geq 2^{\hat{c} m}\) for some constant \(\hat{c} > 0\).
+        \label{cor:exp-cs}
     \end{corollary}
 \end{frame}
+
+\setbeamertemplate{background}[grid]
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Corollary \ref{cor:exp-cs} Proof}
+    \begin{corollary}
+        \(c_s(m) \geq 2^{\hat{c} m}\) for some constant \(\hat{c} > 0\).
+    \end{corollary}
+\end{frame}
+\setbeamertemplate{background}[default]
 
 \end{document}
