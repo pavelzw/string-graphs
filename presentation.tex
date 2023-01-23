@@ -132,9 +132,132 @@
 \end{frame}
 
 \begin{frame}{Bounding the Number of Intersections 3}
-    \centering
-    % no whitespace allowed between animations -> all on one line
-    \includegraphics<1>[width=0.9\textwidth]{images/figure-4.pdf}\includegraphics<2>[width=0.9\textwidth]{images/figure-5.pdf}\includegraphics<3>[width=0.9\textwidth]{images/figure-6.pdf}\includegraphics<4>[width=0.9\textwidth]{images/figure-7.pdf}\includegraphics<5>[width=0.9\textwidth]{images/figure-8.pdf}\includegraphics<6>[width=0.9\textwidth]{images/figure-9.pdf}\includegraphics<7>[width=0.9\textwidth]{images/figure-10.pdf}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item Suppose not. Let \(D\) be a weak realization of \((G, R)\) with minimal number of intersections.
+            \item<2-> Let \(e\) be an edge which has \(> 2^m - 1\) intersections.
+            \item<3-> Choose a segment of \(e\) which is intersected an even number of times by any other edge. Draw a window around this segment with no other intersections.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-4.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 4}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item Let \(2n_f\) be the number of intersections of edge \(f\) with \(e\) in this window.
+            \item<2-> For each \(f\), assign numbers \(1, \ldots, 4 n_f\) to the intersections with the window in the order they appear on \(f\).
+            \item<3-> We can assume (by Jordan-Schoenflies theorem) that the window is a circle and \(e\) is a straight line and \(\forall f\), the intersections \(2i-1\) and \(2i\) are mirror images.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-5.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 5}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item For each \(f\), there is a connection between \(4i-2\) and \(4i-1\) lying completely outside the window.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-6.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 6}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item Use circular inversion along the circle to bring all of these conections inside.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-7.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 7}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item Mirror everything inside of the window along \(e\).
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-8.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 8}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item Now, we have for every edge a connection between \(4i-3\) and \(4i\) which is inside the window.
+            \item<2-> Build a new version \(\tilde{f}\): start at intersection \(1\) (connected to one of the endpoints of \(f\)), continue to \(4\) (inside), \(5\) (outside), etc. until \(4 n_f\).            
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-9.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 9}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item \(f\) intersects \(e\) an even number of times \(\Rightarrow \tilde{f}\) still connects the two original endpoints.
+            \item<2-> \(\leadsto\) reduced the number of intersections with the window from \(4 n_f\) to \(2 n_f\).
+            \item<3-> Every intersection between the curves inside the circle corresponds to an intersection outside \(\Rightarrow\) the new realization respects \(R\) (in this example, there are no intersections).
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-9.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bounding the Number of Intersections 10}
+    \begin{columns}
+    \begin{column}{0.35\textwidth}
+        \begin{itemize}
+            \item The number of intersections along \(e\) might have increased.
+            \item<2-> \(\tilde{f}\) halved the number of intersections between the intersections and the boundary. 
+            \item<3-> \(\leadsto\) \(e'\) = one of the two sides of the boundary of the window (at least one side has less intersections than before).
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.65\textwidth}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/figure-10.pdf}
+        \end{center}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{String graph decidability}
@@ -163,7 +286,7 @@
 \end{frame}
 
 \begin{frame}{Exponential Representations}
-    \centering{}\includegraphics<1>[width=0.8\textwidth]{images/figure-11.png}\includegraphics<2>[width=0.8\textwidth]{images/figure-12.png}
+\includegraphics<1>[width=0.8\textwidth]{images/figure-11.png}\includegraphics<2>[width=0.8\textwidth]{images/figure-12.png}
 \end{frame}
 
 \begin{frame}{Exponential Representations}
