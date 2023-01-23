@@ -98,8 +98,8 @@
 
 \begin{frame}{Relationships between realizability functions}
     \begin{lemma}
-        \label{lem:pol-equivalent}
         \(c_r\), \(c_w\) and \(c_s\) are polynomially equivalent.
+        \label{lem:pol-equivalent}
     \end{lemma}
 \end{frame}
 
@@ -121,7 +121,34 @@
     \begin{lemma}
         Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
     \end{lemma}
+    \pause
+    \textbf{Example:}
+    \(w = 12312231, |w| = 8 \geq 2^3\)
+
+    \[ v_0 = \begin{pmatrix}
+    0 \\ 0 \\ 0
+    \end{pmatrix}, v_1 = \begin{pmatrix}
+    1 \\ 0 \\ 0
+    \end{pmatrix}, v_2 = \begin{pmatrix}
+    1 \\ 1 \\ 0
+    \end{pmatrix}, v_3 = \begin{pmatrix}
+    1 \\ 1 \\ 1
+    \end{pmatrix}, v_4 = \begin{pmatrix}
+    0 \\ 1 \\ 1
+    \end{pmatrix}, \]
+    
+    \[ v_5 = \begin{pmatrix}
+    0 \\ 0 \\ 1
+    \end{pmatrix}, v_6 = \begin{pmatrix}
+    0 \\ 1 \\ 1
+    \end{pmatrix}, v_7 = \begin{pmatrix}
+    0 \\ 1 \\ 0
+    \end{pmatrix}, v_8 = \begin{pmatrix}
+    1 \\ 1 \\ 0
+    \end{pmatrix} \]
 \end{frame}
+
+
 
 \begin{frame}{Bounding the Number of Intersections 2}
     \begin{theorem}
@@ -264,7 +291,6 @@
     \begin{corollary}
         String graph recognition is in \(\mathbf{NEXP}\).
     \end{corollary}
-    \pause
     \begin{theorem}[Schnyder]
         Each plane graph with \(n \geq 3\) vertices has a straight line embedding on the \(n-2\) by \(n-2\) grid.
     \end{theorem}
