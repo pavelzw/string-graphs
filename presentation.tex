@@ -110,7 +110,7 @@
 \end{frame}
 
 \begin{frame}{\textsc{Realizability} \(\propto\) \textsc{String}}
-    Let \(G = (V, E)\), \(R \subseteq \binom{E}{2}\) be a realizability problem.\pause
+    Let \(G = (V, E)\), \(R \subseteq \binom{E}{2}\) be a realizability problem. \pause
     Construct \(V' = V \cup E \cup \set{(u, e) : u \in e \in E}\) 
     and \(E' = R \cup \set{ \set{u, (u,e)}, u \in e \in E} \cup \set{\set{e, (u,e)}, u\in e \in E}\). \pause
     Then \((G, R)\) is realizable iff \(G' = (V', E')\) is a string graph.
@@ -354,9 +354,9 @@
         \label{thm:schnyder}
     \end{theorem}
     \begin{itemize}
-        \item Let \(G\) be a string graph with \(m\) edges. \pause
-        Then, since \(c_s(m) \leq 4 c_w(2m) + 2m\), generate an instance \((G', R)\) of size \(c m\) for some \(c > 0\) s.t.
-        \((G, R)\) is weakly realizable.
+        \item Let \(G\) be a string graph with \(m\) vertices. \pause
+        Then, since \(c_s(m) \leq 4 c_w(2m) + 2m\), generate an instance \((G', R)\) of size \(c m\) (\#vertices) for some \(c > 0\) s.t.
+        \((G', R)\) is weakly realizable.
         \item<3-> Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \(\leq 2^{cm}\) intersections per edge.\\
         \(\leadsto\) The collection of curves also has \(M \leq 2^{\tilde{c} m}\) intersections.
         \item<4-> Consider this collection of curves of size \(M\) and draw them as a plane graph \\(intersection \(\mapsto\) vertex), at most \(M\) vertices.
@@ -455,8 +455,8 @@
                 \end{itemize}
             \end{enumerate}
             \begin{itemize}
-                \item<5-> \(\Rightarrow\) \(2^{i-1} + 2^{i-1} = 2^i = 2^{(i+1) - 1}\) intersections.
-                \item<6-> \(\Rightarrow c_w(5n + 13) \geq n \cdot (2^n - 1)\). \qed
+                \item<5-> \(\Rightarrow\) \(2^{i-1} + 2^{i-1} = 2^i = 2^{(i+1) - 1}\) intersections \(\checkmark\)
+                \item<6-> \(\Rightarrow c_w(5n + 13) \geq 2^n - 1\). \qed
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
