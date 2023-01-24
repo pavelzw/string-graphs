@@ -74,19 +74,19 @@ while guaranteeing that \(P_i\) intersects \(P_j\) if \(C_i\) and \(C_j\) inters
 \end{lemma}
 
 \begin{proof}
-1. Since \(c_w(G, R) = c_r(G, R')\) for some \(R' \subset R\), it follows from \(c_w(G, R) \leq \max\set{c_r(G, R'): R' \subseteq R \text{ and } (G,R) \text{ has a realization}} = c_r(G, R') \).
+1. Since \(c_w(G, R) = c_r(G, R')\) for some \(R' \subset R\), it follows from \(c_w(G, R) \leq \max\set{c_r(G, R'): R' \subseteq R \text{ and } (G,R) \text{ has a realization}} = c_r(G, R) \).
 
 2. Idea: Let \(G = (V, E)\) be a graph and \(R \subseteq \binom{E}{2}\). Construct \(V' = V \cup E \cup \set{(u, e) : u \in e \in E}\) 
 and \(E' = R \cup \set{ \set{u, (u,e)}, u \in e \in E} \cup \set{\set{e, (u,e)}, u\in e \in E}\). Then \((G, R)\) is realizable iff 
 \(G' = (V', E')\) is a string graph. \(\Rightarrow \) 2.
 
-\image{images/figure-2.jpeg}
+\image{images/figure-2.pdf}
 
 3. Idea: Given a graph \(G = (V, E)\), let \(G' = (V \cup E, \set{\set{u,e} : u \in e \in E})\) and 
 \(R = \set{\set{\set{u,e}, \set{v,f}} : \set{u,v} \in E}\). Then \(G\) is a string graph iff \((G', R)\) 
 is weakly realizable. \(\Rightarrow \) 3.
 
-\image{images/figure-3.jpeg}
+\image{images/figure-3.pdf}
 \end{proof}
 
 \begin{lemma}\label{lem:even-occurences}
