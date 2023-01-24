@@ -23,14 +23,12 @@
 
 \definecolor{highlight}{RGB}{255, 136, 213}
 
-\usepackage{graphicx} % to include graphics with \includegraphics[options]{imagefile}
+\usepackage{graphicx}
 
-\theoremstyle{plain} % Usual style for theorems, etc.
+\theoremstyle{plain}
 
 \setbeamertemplate{theorems}[numbered]
-
-\theoremstyle{remark} % Usual style definitions.
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{lemma*}{Lemma}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
@@ -42,11 +40,6 @@
 \begin{document}
 
 \maketitle
-
-% \begin{frame}{Table of contents}
-%     \setbeamertemplate{section in toc}[sections numbered]
-%     \tableofcontents%[hideallsubsections]
-% \end{frame}
 
 \section{Introduction}
 
@@ -86,15 +79,6 @@
     \end{lemma}
 \end{frame}
 
-% \setbeamertemplate{background}[grid]
-% \addtocounter{theorem}{-1}
-% \begin{frame}[t]{Lemma \ref{lem:finite-cs} Proof}
-%     \begin{lemma}
-%         A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
-%     \end{lemma}
-% \end{frame}
-% \setbeamertemplate{background}[default]
-
 \begin{frame}{Realizability}
     \begin{itemize}
         \item Graph \(G = (V, E)\), \(R \subseteq \binom{E}{2} = \set{\set{e, f} : e, f \in E} \) on \(E\)
@@ -113,7 +97,12 @@
 
 \begin{frame}{Relationships between realizability functions}
     \begin{lemma}
-        \(c_r\), \(c_w\) and \(c_s\) are polynomially equivalent.
+        \(c_r\), \(c_w\) and \(c_s\) are equivalent in the following sense:
+        \begin{itemize}
+            \item \(c_w(m) \leq c_r(m)\)
+            \item \(c_r(m) \leq 4 c_s(m^2 + 4m)\)
+            \item \(c_s(m) \leq 4 c_w(2m) + 2m\)
+        \end{itemize}
         \label{lem:pol-equivalent}
     \end{lemma}
 \end{frame}
@@ -129,7 +118,7 @@
 \end{frame}
 
 \begin{frame}{\textsc{String} \(\propto\) \textsc{Weak Realizability}}
-    Let \(G = (V,E)\) be a string graph instance.\pause
+    Let \(G = (V,E)\) be a string graph instance. \pause
     Define the following problem \((G', R)\):\\
     \(G' = (V \cup E, \set{\set{u,e} : u \in e \in E})\) and\\
     \(R = \set{\set{\set{u,e}, \set{v,f}} : \set{u,v} \in E}\).
@@ -137,15 +126,6 @@
         \includegraphics[height=0.4\textheight]{images/figure-3.pdf}
     \end{center}
 \end{frame}
-
-% \setbeamertemplate{background}[grid]
-% \addtocounter{theorem}{-1}
-% \begin{frame}[t]{Lemma \ref{lem:pol-equivalent} Proof}
-%     \begin{lemma}
-%         \(c_r\), \(c_w\) and \(c_s\) are polynomially equivalent.
-%     \end{lemma}
-% \end{frame}
-% \setbeamertemplate{background}[default]
 
 \section{Bounding the Number of Intersections}
 
@@ -163,13 +143,13 @@
 \begin{frame}{Bounding the Number of Intersections 1}
     Assign each curve a unique number \(\leadsto\) intersections along a particular curve is a word over an alphabet
     \begin{lemma}
-        Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
+        Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial (contiguous) subword in which every character occurs an even number of times.
         \label{lem:even-occurrences}
     \end{lemma}
 \end{frame}
 
 \addtocounter{theorem}{-1}
-\begin{frame}{Lemma \ref{lem:even-occurrences} Proof}
+\begin{frame}[t]{Lemma \ref{lem:even-occurrences} Proof}
     \begin{lemma}
         Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
     \end{lemma}
@@ -179,7 +159,7 @@
                 \item Let \(\Sigma = \set{1, \ldots, n}\), \(w \in \Sigma^*, |w| \geq 2^n\).
                 \item<2-> \(\forall i \in \set{0, \ldots, 2^n}\), assign a vector \(v_i \in \Z_2^n\) whose \(j\)-th coordinate \(=\) parity of \#occurences of symbol \(j\) in the \(w[:i]\).
                 \item<6-> \(\exists 2^n + 1\) indices \(\Rightarrow\) Pigeonhole Principle \(\Rightarrow\) \(\exists i < j\) with \(v_i = v_j\).
-                \item<7-> For \(w' \coloneqq w[(i+1):j]\), every symbol occurs an even number of times.
+                \item<7-> For \(w' \coloneqq w[(i+1):j]\), every symbol occurs an even number of times. \qed
             \end{itemize}
         \end{column}
         \begin{column}{0.6\textwidth}
@@ -215,20 +195,12 @@
     \end{columns}
 \end{frame}
 
-% \setbeamertemplate{background}[grid]
-% \addtocounter{theorem}{-1}
-% \begin{frame}[t]{Lemma \ref{lem:even-occurrences} Proof}
-%     \begin{lemma}
-%         Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
-%     \end{lemma}
-% \end{frame}
-% \setbeamertemplate{background}[default]
-
 \begin{frame}{Bounding the Number of Intersections 2}
     \begin{theorem}
         Let \(G\) be a graph with \(m\) edges, \(R \subseteq \binom{E}{2}\) such that \((G, R)\) is weakly realizable, and let \(D\) 
         be a weak realization of \((G, R)\) with the minimal number of intersections. Then for any edge \(e \in G\) 
         there are less than \(2^m\) intersections on the curve realizing \(e\) in \(D\).
+        \label{thm:weak-realizability-bound}
     \end{theorem}
 \end{frame}
 
@@ -270,7 +242,7 @@
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
-            \item For each \(f\), there is a connection between \(4i-2\) and \(4i-1\) lying completely outside the window.
+            \item For each \(f\), there is a connection between \(4i-2\) and \(4i-1\) (\(i \in \set{1,\ldots, n_f}\)) lying completely outside the window.
         \end{itemize}
     \end{column}
     \begin{column}{0.65\textwidth}
@@ -316,7 +288,7 @@
     \begin{column}{0.35\textwidth}
         \begin{itemize}
             \item Now, we have for every edge a connection between \(4i-3\) and \(4i\) which is inside the window.
-            \item<2-> Build a new version \(\tilde{f}\): start at intersection \(1\) (connected to one of the endpoints of \(f\)), continue to \(4\) (inside), \(5\) (outside), etc. until \(4 n_f\).            
+            \item<2-> Build a new version \(f'\): start at intersection \(1\) (connected to one of the endpoints of \(f\)), continue to \(4\) (inside), \(5\) (outside), etc. until \(4 n_f\).            
         \end{itemize}
     \end{column}
     \begin{column}{0.65\textwidth}
@@ -331,7 +303,7 @@
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
-            \item \(f\) intersects \(e\) an even number of times \(\Rightarrow \tilde{f}\) still connects the two original endpoints.
+            \item \(f\) intersects \(e\) an even number of times \(\Rightarrow f'\) still connects the two original endpoints.
             \item<2-> \(\leadsto\) reduced the number of intersections with the window from \(4 n_f\) to \(2 n_f\).
             \item<3-> Every intersection between the curves inside the circle corresponds to an intersection outside \(\Rightarrow\) the new realization respects \(R\) (in this example, there are no intersections).
         \end{itemize}
@@ -349,8 +321,8 @@
     \begin{column}{0.35\textwidth}
         \begin{itemize}
             \item The number of intersections along \(e\) might have increased.
-            \item<2-> \(\tilde{f}\) halved the number of intersections between the intersections and the boundary. 
-            \item<3-> \(\leadsto\) \(e'\) = one of the two sides of the boundary of the window (at least one side has less intersections than before).
+            \item<2-> \(f'\) halved the number of intersections between the \(f'\) and the window boundary. 
+            \item<3-> \(\leadsto\) \(e' \coloneqq\) one of the two sides of the boundary of the window (at least one side has less intersections than before). \qed
         \end{itemize}
     \end{column}
     \begin{column}{0.65\textwidth}
@@ -371,17 +343,26 @@
     \end{theorem}
 \end{frame}
 
-\setbeamertemplate{background}[grid]
 \addtocounter{theorem}{-2}
 \begin{frame}[t]{Corollary \ref{cor:decidability} Proof}
     \begin{corollary}
         String graph recognition is in \(\mathbf{NEXP}\).
     \end{corollary}
-    \begin{theorem}[Schnyder]
+    \begin{theorem}[{{\color<5>{highlight}Schnyder}}]
         Each plane graph with \(n \geq 3\) vertices has a straight line embedding on the \(n-2\) by \(n-2\) grid.
+        \label{thm:schnyder}
     \end{theorem}
+    \begin{itemize}
+        \item Let \(G\) be a string graph with \(m\) edges. \pause
+        Then, since \(c_s(m) \leq 4 c_w(2m) + 2m\), generate an instance \((G', R)\) of size \(c m\) for some \(c > 0\) s.t.
+        \((G, R)\) is weakly realizable.
+        \item<3-> Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \(\leq 2^{cm}\) intersections per edge.\\
+        \(\leadsto\) The collection of curves also has \(M \leq 2^{\tilde{c} m}\) intersections.
+        \item<4-> Consider this collection of curves of size \(M\) and draw them as a plane graph \\(intersection \(\mapsto\) vertex), at most \(M\) vertices.
+        \item<5-> By Theorem \ref{thm:schnyder}, there is a drawing of this graph on an \((M-2) \times (M-2)\) grid.
+        \item<6-> \(\Rightarrow\) in \(\mathbf{NEXP}\), guess a graph (\(\sim\) collection of curves) on such a grid and verify whether its intersection graph is isomorphic to \(G\). \qed
+    \end{itemize}
 \end{frame}
-\setbeamertemplate{background}[default]
 
 \section{String Graphs Requiring Exponential Representations}
 
@@ -399,17 +380,89 @@
     \end{theorem}
 \end{frame}
 
-\setbeamertemplate{background}[grid]
+\begin{frame}{Theorem \ref{thm:exp-cw} Proof}
+    \includegraphics[width=0.8\textwidth]{images/figure-11.png}
+\end{frame}
+
 \addtocounter{theorem}{-1}
 \begin{frame}[t]{Theorem \ref{thm:exp-cw} Proof}
     \begin{theorem}
         \(c_w(m) \geq 2^{c m}\) for some constant \(c > 0\).
     \end{theorem}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item This graph has a topologically unique drawing.
+                \item Add edges \(\set{u_i, v_i}, i=1,2,\ldots, n \), allow them to cross only the edge \(\set{a,b}\) and the horizontal path \(AB\), not each other.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/figure-11.png}
+        \end{column}
+    \end{columns}
 \end{frame}
-\setbeamertemplate{background}[default]
 
-\begin{frame}{Exponential Representations}
-\includegraphics<1>[width=0.8\textwidth]{images/figure-11.png}\includegraphics<2>[width=0.8\textwidth]{images/figure-12.png}
+\begin{frame}[t]{Theorem \ref{thm:exp-cw} Proof}
+    \begin{lemma*}
+        In every weak realization, the edge \(\set{u_i, v_i}\) intersects 
+        the edge \(\set{a,b}\) at least \(2^{i-1}\) times.
+    \end{lemma*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item<2-> Induction start, \(i=1\): \(2^{1-0} = 1\) exactly one crossing of 
+                \(\set{a,b}\) \(\checkmark\)
+                \item<3-> Induction step: Let it hold for some \(i\).
+                \item<4-> \(\set{u_{i+1}, v_{i+1}}\) is not allowed to cross \(\set{u_i, v_i}\).
+                \item<5-> \(\Rightarrow\) it must make a turn around \(v_i\).
+                \item<6-> Thus, it consists of two parts:
+                \begin{enumerate}
+                    \item<6-> from \(u_{i+1}\) to the turnpoint
+                    \item<7-> from the turnpoint to \(v_{i+1}\)
+                \end{enumerate}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics<1>[width=\textwidth]{images/figure-12.png}%
+            \includegraphics<2>[width=\textwidth]{images/figure-13.png}%
+            \includegraphics<3>[width=\textwidth]{images/figure-12.png}%
+            \includegraphics<4>[width=\textwidth]{images/figure-14.png}%
+            \includegraphics<5>[width=\textwidth]{images/figure-15.png}%
+            \includegraphics<6>[width=\textwidth]{images/figure-16.png}%
+            \includegraphics<7->[width=\textwidth]{images/figure-17.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Theorem \ref{thm:exp-cw} Proof}
+    \begin{lemma*}
+        In every weak realization, the edge \(\set{u_i, v_i}\) intersects 
+        the edge \(\set{a,b}\) at least \(2^{i-1}\) times.
+    \end{lemma*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{enumerate}
+                \item \(u_{i+1}\) to turnpoint:
+                \begin{itemize}
+                    \item If we contract \(u_{i+1}\) and \(u_i\), it can be used as an edge joining \(u_i\) and \(v_i\).
+                    \item<2-> \(\leadsto 2^{i-1}\) intersections
+                \end{itemize}
+                \item<3-> turnpoint to \(v_{i+1}\):
+                \begin{itemize}
+                    \item<3-> If we contract \(v_{i+1}\) and \(u_i\), it can be used as an edge joining \(u_i\) and \(v_i\).
+                    \item<4-> \(\leadsto 2^{i-1}\) intersections
+                \end{itemize}
+            \end{enumerate}
+            \begin{itemize}
+                \item<5-> \(\Rightarrow\) \(2^{i-1} + 2^{i-1} = 2^i = 2^{(i+1) - 1}\) intersections. \qed
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics<1-2>[width=\textwidth]{images/figure-16.png}%
+            \includegraphics<3-4>[width=\textwidth]{images/figure-17.png}%
+            \includegraphics<5->[width=\textwidth]{images/figure-12.png}%
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Exponential Representations}
@@ -418,14 +471,5 @@
         \label{cor:exp-cs}
     \end{corollary}
 \end{frame}
-
-% \setbeamertemplate{background}[grid]
-% \addtocounter{theorem}{-1}
-% \begin{frame}[t]{Corollary \ref{cor:exp-cs} Proof}
-%     \begin{corollary}
-%         \(c_s(m) \geq 2^{\hat{c} m}\) for some constant \(\hat{c} > 0\).
-%     \end{corollary}
-% \end{frame}
-% \setbeamertemplate{background}[default]
 
 \end{document}
