@@ -153,7 +153,7 @@
 \addtocounter{theorem}{-1}
 \begin{frame}[t]{Lemma \ref{lem:even-occurrences} Proof}
     \begin{lemma}
-        Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial subword in which every character occurs an even number of times.
+        Every word of length \(\geq 2^n\) over an alphabet of size \(n\) contains a non-trivial (contiguous) subword in which every character occurs an even number of times.
     \end{lemma}
     \begin{columns}
         \begin{column}{0.4\textwidth}
@@ -166,16 +166,16 @@
         \end{column}
         \begin{column}{0.6\textwidth}
             \textbf{Example:}
-            \(w = 12312231, |w| = 8 \geq 2^3\)\pause
+            \(w = {\color<3-4>{highlight}1}{\color<4>{highlight}2}312231, |w| = 8 \geq 2^3\)\pause
 
             \[ v_0 = \begin{pmatrix}
             0 \\ 0 \\ 0
-            \end{pmatrix}, \pause v_1 = \begin{pmatrix}
+            \end{pmatrix}\pause{}, v_1 = \begin{pmatrix}
             1 \\ 0 \\ 0
-            \end{pmatrix}, \pause 
+            \end{pmatrix}\pause{},
             {\color<6->{highlight} v_2 = \begin{pmatrix}
                 1 \\ 1 \\ 0
-            \end{pmatrix}}, \pause v_3 = \begin{pmatrix}
+            \end{pmatrix}}\pause{}, v_3 = \begin{pmatrix}
             1 \\ 1 \\ 1
             \end{pmatrix}, v_4 = \begin{pmatrix}
             0 \\ 1 \\ 1
