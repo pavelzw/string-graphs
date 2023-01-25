@@ -80,9 +80,9 @@
 
 \addtocounter{theorem}{-1}
 \begin{frame}[t]{Lemma \ref{lem:finite-cs} Proof}
-    \begin{lemma*}
+    \begin{lemma}
         A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
-    \end{lemma*}
+    \end{lemma}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{itemize}
@@ -138,7 +138,7 @@
     and \(E' = R \cup \set{ \set{u, (u,e)}, u \in e \in E} \cup \set{\set{e, (u,e)}, u\in e \in E}\). \pause
     Then \((G, R)\) is realizable iff \(G' = (V', E')\) is a string graph.
     \begin{center}
-        \includegraphics[height=0.6\textheight]{images/figure-2.pdf}
+        \includegraphics[height=0.5\textheight]{images/figure-2.pdf}
     \end{center}
 \end{frame}
 
@@ -228,12 +228,12 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 3}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
             \item Suppose not. Let \(D\) be a weak realization of \((G, R)\) with minimal number of intersections.
-            \item<2-> Let \(e\) be an edge which has \(> 2^m - 1\) intersections.
+            \item<2-> Let \(e\) be an edge which has \(\geq 2^m\) intersections.
             \item<3-> Choose a segment of \(e\) which is intersected an even number of times by any other edge. Draw a window around this segment with no other intersections.
         \end{itemize}
     \end{column}
@@ -245,7 +245,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 4}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -262,7 +262,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 5}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -277,7 +277,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 6}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -292,7 +292,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 7}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -307,7 +307,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 8}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -323,7 +323,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 9}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -340,7 +340,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounding the Number of Intersections 10}
+\begin{frame}{Theorem \ref{thm:weak-realizability-bound} Proof}
     \begin{columns}
     \begin{column}{0.35\textwidth}
         \begin{itemize}
@@ -378,7 +378,7 @@
     \end{theorem}
     \begin{itemize}
         \item Let \(G\) be a string graph with \(m\) vertices. \pause
-        Then, since \(c_s(m) \leq 4 c_w(2m) + 2m\), generate an instance \((G', R)\) of size \(c m\) (\#vertices) for some \(c > 0\) s.t.
+        Then, since \(c_s(m) \leq 4 c_w(2m) + 2m\), generate an instance \((G', R)\) with \(c m\) vertices for some \(c > 0\) s.t.
         \((G', R)\) is weakly realizable.
         \item<3-> Using Theorem \ref{thm:weak-realizability-bound}, there must be a drawing with \(\leq 2^{cm}\) intersections per edge.\\
         \(\leadsto\) The collection of curves also has \(M \leq 2^{\tilde{c} m}\) intersections.
@@ -479,7 +479,7 @@
             \end{enumerate}
             \begin{itemize}
                 \item<5-> \(\Rightarrow\) \(2^{i-1} + 2^{i-1} = 2^i = 2^{(i+1) - 1}\) intersections \(\checkmark\)
-                \item<6-> \(\Rightarrow c_w(5n + 13) \geq 2^n - 1\). \qed
+                \item<6-> \(\Rightarrow c_w(5n + 13) \geq 2^{n - 1}\). \qed
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
