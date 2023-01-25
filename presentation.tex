@@ -35,7 +35,6 @@
 \newcommand{\Z}{\mathbb{Z}}
 
 \newcommand{\set}[1]{\{#1\}}
-\newcommand{\norm}[1]{\|#1\|}
 
 \begin{document}
 
@@ -79,6 +78,32 @@
     \end{lemma}
     \pause
     Proof \textit{idea}: Use compactness arguments to show that the set of curves can be covered by a finite number of open sets, combine these sets via polygonal arcs.
+\end{frame}
+
+\addtocounter{theorem}{-1}
+\begin{frame}[t]{Lemma \ref{lem:finite-cs} Proof}
+    \begin{lemma*}
+        A string graph can be realized by a family of polygonal arcs with a finite number of intersections.
+    \end{lemma*}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Let \((C_i)_{i\in I}\) be a family of curves in the plane.
+                \item<2-> Let \(C \coloneqq \bigcup_{i\in I}C_i\). \(C\) is compact (bounded and closed).
+                \item<3-> For \(p \in C\) find an open neighborhood \(O_p\) of \(p\) such that \(C \cap O_p\) is only on one curve (or two if they intersect in \(p\)).
+                \item<4-> \(\mathcal{O} \coloneqq \set{O_p : p \in C}\) is an open cover of \(C\).
+                \item<5-> \(\mathcal{O}\) can be refined to a finite subcover \(\mathcal{O}'\).
+                \item<6-> In each \(O \in \mathcal{O}'\), replace the curves by polygonal arcs. \qed
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics<1-2>[width=\textwidth]{images/figure-18.pdf}%
+            \includegraphics<3>[width=\textwidth]{images/figure-19.pdf}%
+            \includegraphics<4>[width=\textwidth]{images/figure-20.pdf}%
+            \includegraphics<5>[width=\textwidth]{images/figure-21.pdf}%
+            \includegraphics<6->[width=\textwidth]{images/figure-22.pdf}%
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Realizability}
