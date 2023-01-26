@@ -10,8 +10,8 @@
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{logos/radboud-university}}
 
 % BibTeX setup
-% \usepackage[backend=bibtex, bibstyle=alphabetic, citestyle=alphabetic]{biblatex}
-% \bibliography{references}
+\usepackage[backend=bibtex, bibstyle=alphabetic, citestyle=alphabetic]{biblatex}
+\bibliography{references}
 
 \usepackage[english]{babel} % English
 
@@ -42,7 +42,7 @@
 
 \section{Introduction}
 
-\begin{frame}{What is a string graph?}
+\begin{frame}{What is a string graph? \cite{schaefer01}}
     \setbeamertemplate{background}[grid]
     \begin{itemize}
         \item A \textit{curve} (or \textit{string}) is a set homeomorphic to \([0,1]\)
@@ -51,7 +51,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Non-string graph example}
+\begin{frame}{Non-string graph example \cite{sinden66}}
     There are graph instances that cannot be string graphs.
 
     \begin{center}
@@ -67,7 +67,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\(c_s(G)\) is finite}
+\begin{frame}{\(c_s(G)\) is finite \cite{schaefer01}}
     \begin{itemize}
         \item It is not obvious that \(c_s(G)\) is finite for every string graph \(G\)
         \item Kratochvíl et al. showed that \(c_s(G)\) is finite for every string graph \(G\)
@@ -120,7 +120,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Relationships between realizability functions}
+\begin{frame}{Relationships between realizability functions \cite{schaefer01} \cite{kra91b}}
     \begin{lemma}
         \(c_r\), \(c_w\) and \(c_s\) are equivalent in the following sense:
         \begin{itemize}
@@ -152,7 +152,7 @@
     \end{center}
 \end{frame}
 
-\section{Bounding the Number of Intersections}
+\section{Bounding the Number of Intersections \cite{schaefer01}}
 
 \begin{frame}{Bounding the Number of Intersections -- Strategy}
     Show by contradiction: There exists a drawing for a realizability problem 
@@ -388,7 +388,7 @@
     \end{itemize}
 \end{frame}
 
-\section{String Graphs Requiring Exponential Representations}
+\section{String Graphs Requiring Exponential Representations \cite{kra91a}}
 
 \begin{frame}{String Graphs Requiring Exponential Representations}
     Goal: provide a construction of a graph on \(O(n)\) vertices which can be represented
@@ -495,6 +495,11 @@
         \(c_s(m) \geq 2^{\hat{c} m}\) for some constant \(\hat{c} > 0\).
         \label{cor:exp-cs}
     \end{corollary}
+\end{frame}
+
+\begin{frame}%[allowframebreaks] not needed, not that many references
+    \frametitle{References}
+    \printbibliography[heading=none]
 \end{frame}
 
 \end{document}
